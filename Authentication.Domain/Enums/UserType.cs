@@ -8,5 +8,6 @@ public enum UserType
   ShopAdmin,
   SalesPerson,
   Curier,
-  Warehouseman
+  Warehouseman,
+  User
 }
