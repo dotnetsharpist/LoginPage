@@ -117,7 +117,7 @@ public class AuthService : IAuthService
                     throw new CustomException(429, "Too many attempts please try again later.");
                 else if (verificationDto.Code == code)
                 {
-                    var dbResult = true;
+                    var dbResult = await RegisterToDatabaseAsync(registerDto);
                     if (dbResult is true)
                     {
                         var user = await _unitOfWork.UserRepository.SelectAsync(x => x.Email == email);

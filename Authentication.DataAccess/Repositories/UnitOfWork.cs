@@ -4,7 +4,7 @@ using Authentication.Domain.Entities.User;
 
 namespace Authentication.DataAccess.Repositories;
 
-public class UnitOfWork
+public class UnitOfWork : IUnitOfWork
 {
     private readonly AuthenticationDbContext dbContext;
 
