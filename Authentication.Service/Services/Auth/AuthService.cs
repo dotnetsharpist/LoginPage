@@ -32,12 +32,13 @@ public class AuthService : IAuthService
 
     public AuthService(IConfiguration configuration, IRepository<User> repository,
         IMapper mapper, IUnitOfWork unitOfWork, ITokenService tokenService,
-        IEmailSmsSender smsSender)
+        IEmailSmsSender smsSender, IMemoryCache memoryCache)
     {
         _configuration = configuration;
         _repository = repository;
         _unitOfWork = unitOfWork;
         _mapper = mapper;
+        _memoryCache = memoryCache;
         _tokenService = tokenService;
         _emailSmsSender = smsSender;
     }

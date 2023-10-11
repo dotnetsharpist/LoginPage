@@ -1,8 +1,10 @@
 ﻿using Authentication.DataAccess.IRepositories;
 using Authentication.DataAccess.Repositories;
 using Authentication.Service.Interfaces.Auth;
+using Authentication.Service.Interfaces.Notifications;
 using Authentication.Service.Mappers;
 using Authentication.Service.Services.Auth;
+using Authentication.Service.Services.Notifications;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
@@ -17,7 +19,9 @@ public static class ServiceCollections
         services.AddScoped<IUnitOfWork, UnitOfWork>();
         services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
         services.AddScoped<IAuthService, AuthService>();
-        //services.AddAutoMapper(typeof(MappingProfile));
+        services.AddScoped<ITokenService, TokenService>();
+        services.AddScoped<IEmailSmsSender, EmailSmsSender>();
+        services.AddAutoMapper(typeof(MappingProfile));
     }
     public static void AddJwt(this IServiceCollection services, IConfiguration configuration)
     {
