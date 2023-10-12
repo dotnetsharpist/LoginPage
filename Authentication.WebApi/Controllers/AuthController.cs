@@ -36,7 +36,7 @@ public class AuthController : ControllerBase
     public async Task<IActionResult> SendCodeRegisterAsync(string email)
     {
         var result = EmailValidator.IsValid(email);
-        if (result == false) return BadRequest("Phone number is invalid!");
+        if (result == false) return BadRequest("Emai; is invalid!");
 
         var serviceResult = await _authService.SendCodeForRegisterAsync(email);
         return Ok(new { serviceResult.Result, serviceResult.CachedVerificationMinutes });
@@ -46,7 +46,7 @@ public class AuthController : ControllerBase
     [AllowAnonymous]
     public async Task<IActionResult> VerifyRegisterAsync([FromBody] VerifyRegisterDto verifyRegisterDto)
     {
-        var serviceResult = await _authService.VerifyRegisterAsync(verifyRegisterDto.PhoneNumber, verifyRegisterDto.Code);
+        var serviceResult = await _authService.VerifyRegisterAsync(verifyRegisterDto.Email, verifyRegisterDto.Code);
         return Ok(new { serviceResult.Result, serviceResult.Token });
     }
 

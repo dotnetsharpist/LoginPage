@@ -98,7 +98,7 @@ public class AuthService : IAuthService
                 TimeSpan.FromMinutes(CACHED_MINUTES_FOR_VERIFICATION));
 
             SmsMessage emailMessage = new SmsMessage();
-            emailMessage.Title = "Heavy Service";
+            emailMessage.Title = "Komron aka";
             emailMessage.Content = "Your verification code : " + verificationDto.Code;
             emailMessage.Recipient = email;
             var emailResult = await _emailSmsSender.SendAsync(emailMessage);

@@ -2,7 +2,7 @@
 
 public class VerifyRegisterDto
 {
-    public string PhoneNumber { get; set; } = String.Empty;
+    public string Email { get; set; } = String.Empty;
 
     public int Code { get; set; }
 }
