@@ -30,7 +30,7 @@ public class TokenService : ITokenService
             new Claim(ClaimTypes.Role, user.Type.ToString())
         };
 
-        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["SecurityKey"]!));
+        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Key"]!));
         var keyCredentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
         int expiresHours = int.Parse(_config["Lifetime"]!);

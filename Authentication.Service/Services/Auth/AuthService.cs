@@ -157,7 +157,7 @@ public class AuthService : IAuthService
         user.PasswordHash = hasherResult.Hash;
         user.Salt = hasherResult.Salt;
         user.ShopId = dto.ShopId;
-        user.CreatedAt = user.UpdatedAt = TimeHelper.GetDateTime();
+        user.CreatedAt = DateTime.UtcNow;
         var dbResult = await _unitOfWork.UserRepository.AddAsync(user);
 
         await _unitOfWork.SaveAsync();
